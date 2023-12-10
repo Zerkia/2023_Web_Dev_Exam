@@ -1,0 +1,4 @@
+tailwindcss/node_modules
+tailwindcss/package-lock.js
+tailwindcss/package.json
+.gitignore
