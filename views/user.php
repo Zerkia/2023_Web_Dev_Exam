@@ -1,18 +1,19 @@
 <?php 
-require_once __DIR__.'/_header.php';
-require_once __DIR__.'/../_.php';
-$db = _db();
-// $q = $db->prepare("SELECT * FROM users WHERE user_id = :user_id");
-$q = $db->prepare("CALL user_info(:user_id)");
-$q->bindValue(':user_id', $_GET['user_id']); 
-$q->execute();
-$user = $q->fetch();
+    ob_start();
+    require_once __DIR__.'/_header.php';
+    require_once __DIR__.'/../_.php';
+    $db = _db();
+    // $q = $db->prepare("SELECT * FROM users WHERE user_id = :user_id");
+    $q = $db->prepare("CALL user_info(:user_id)");
+    $q->bindValue(':user_id', $_GET['user_id']); 
+    $q->execute();
+    $user = $q->fetch();
 
-if(!$user){
-    header('Location: /users');
-    die();
-}
-
+    if(!$user){
+        header('Location: users');
+        die();
+    }
+    ob_end_flush();
 ?>
 
 <!DOCTYPE html>

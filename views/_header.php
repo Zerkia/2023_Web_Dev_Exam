@@ -1,3 +1,7 @@
+<?php 
+ob_start();
+session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <!-- <html lang="en" class=""> -->
@@ -37,16 +41,23 @@ dark:bg-zinc-700 dark:text-zinc-300">
   <a href="/" class="text-xl font-bold text-sky-600">Food</a>
   
   <div class="hidden md:flex gap-4 mx-auto">
-    <a href="/users">Products</a>
-    <a href="/users">Users</a>
-    <a href="/users">Contact us</a>
-    <a href="/users">About us</a>
+    <a href="users">Products</a>
+    <a href="users">Users</a>
+    <a href="users">Contact us</a>
+    <a href="users">About us</a>
   </div>
   
   <div class="hidden md:flex gap-4">
-    <a href="/Signup">Signup</a>
-    <a href="/Login">Login</a>
-  </div>
+    <?php
+    if (isset($_SESSION['user'])) {
+        echo '<a href="Logout">Logout</a>';
+    } else {
+        echo '<a href="Signup">Signup</a>';
+        echo '<a href="Login">Login</a>';
+    }
+    ?>
+</div>
+
 
 
   <!-- flags: https://github.com/lipis/flag-icons/tree/main/flags/1x1 -->
@@ -86,8 +97,4 @@ dark:bg-zinc-700 dark:text-zinc-300">
 
 </nav>
 
-
-
-
-
-
+<?php ob_end_flush(); ?>

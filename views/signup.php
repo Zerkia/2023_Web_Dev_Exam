@@ -6,7 +6,7 @@ require_once __DIR__.'/_header.php';
 <main class="w-full min-h-screen mt-16">
   <form onsubmit="validate(signup); return false" 
   class="flex flex-col px-4
-  lg:w-1/3 mx-auto gap-4 [&_label]:text-gray-500 [&_input]:px-2 [&_input]:border 
+  lg:w-1/3 mx-auto gap-4 [&_input]:text-black [&_input]:px-2 [&_input]:border 
   [&_input]:border-gray-600 [&_input]:h-10 [&_input]:rounded-md [&_input]:outline-none">
 
     <div class="grid">
@@ -20,11 +20,11 @@ require_once __DIR__.'/_header.php';
     </div>
 
     <div class="grid">
-      <label for="user_username" class="flex">
+      <label for="user_last_name" class="flex">
         <span class="text-sky-600 font-bold">Last Name</span>
         <span class="ml-auto">(<?= USER_LAST_NAME_MIN ?> to <?= USER_LAST_NAME_MAX ?> characters)</span>
       </label>    
-      <input id="user_username" name="user_username" type="text"
+      <input id="user_last_name" name="user_last_name" type="text"
       data-validate="str" data-min="<?= USER_LAST_NAME_MIN ?>" data-max="<?= USER_LAST_NAME_MAX ?>"
       class="">
     </div>

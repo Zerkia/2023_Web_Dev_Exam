@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require_once __DIR__.'/../_.php';
 try{
-
+  session_start();
   $db = _db();
   $q = $db->prepare('SELECT * FROM users LIMIT :page, 2');
   $q->bindValue(':page', $_GET['page'], PDO::PARAM_INT );
