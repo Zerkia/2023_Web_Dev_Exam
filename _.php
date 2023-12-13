@@ -127,6 +127,17 @@ function _validate_user_confirm_password(){
   }
 }
 
+function _is_admin(){
+  if($_SESSION['user']['user_role_fk'] !== 3){
+    header('Location: /');
+    die();
+  };
+}
+
+function _prevent_XSS($text){
+  echo htmlspecialchars($text);
+}
+
 
 
 

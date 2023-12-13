@@ -12,42 +12,39 @@ session_start(); ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">  
-  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="app.css">
   <title>
     Food
   </title>
 </head>
 
-<body oncontextmenu="toogle_menu(); return false" 
-class="w-full h-screen text-base text-gray-900 font-roboto font-light bg-gray-300 
+<body 
+class="w-full h-screen text-base text-gray-900 font-roboto font-light bg-gray-200 
 dark:bg-zinc-700 dark:text-zinc-300">
 
 
-<div id="menu" class="fixed flex top-0 -left-60 h-screen z-10 duration-500">
-  <div id="menu_background" onclick="toogle_menu()" class="hidden absolute top-0 left-0 w-screen h-screen"></div>
-  <div id="menu" class="absolute flex flex-col top-0 left-0 gap-2 w-60 h-screen p-6 text-lg bg-zinc-800 ">
+<div id="menu" class="fixed flex top-0 -right-60 h-screen z-10 duration-500">
+  <div id="menu_background" onclick="toogle_menu()" class="hidden absolute top-0 right-0 w-screen h-screen"></div>
+  <div id="menu" class="absolute flex flex-col top-0 right-0 gap-2 w-60 h-screen p-6 text-lg bg-zinc-800 ">
     <a href="/">Home</a>
     <a href="/">Products</a>
-    <a href="/">Users</a>
-    <a href="/">Contact us</a>
+    <a href="/users">Users</a>
+    <a href="/orders">Orders</a>
     <a href="/">About us</a>
   </div>
 </div>
 
-
-
-
 <nav class="flex items-center w-full h-16 px-4 md:px-12 lg:px-44 border-b border-b-zinc-500">
   <a href="/" class="text-xl font-bold text-sky-600">Food</a>
   
-  <div class="hidden md:flex gap-4 mx-auto">
+  <div class="md:flex gap-4 mx-auto">
     <a href="users">Products</a>
     <a href="users">Users</a>
-    <a href="users">Contact us</a>
+    <a href="orders">Orders</a>
     <a href="users">About us</a>
   </div>
   
-  <div class="hidden md:flex gap-4">
+  <div class="md:flex gap-4">
     <?php
     if (isset($_SESSION['user'])) {
         echo '<a href="Logout">Logout</a>';
@@ -56,14 +53,31 @@ dark:bg-zinc-700 dark:text-zinc-300">
         echo '<a href="Login">Login</a>';
     }
     ?>
-</div>
+  </div>
 
-
-
-  <!-- flags: https://github.com/lipis/flag-icons/tree/main/flags/1x1 -->
   <div class="relative ml-auto">
     <button class="flex items-center" onclick="toggle_language()">
-      <svg class="w-5 h-5 mr-2 rounded-full" aria-hidden="true" viewBox="0 0 3900 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/><path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/><use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g><use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/><use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g></svg>
+      <svg class="w-5 h-5 mr-2 rounded-full" aria-hidden="true" viewBox="0 0 3900 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/>
+        <path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/>
+        <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/>
+        <g fill="#fff">
+          <g id="d">
+            <g id="c">
+              <g id="e">
+                <g id="b">
+                  <path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/>
+                  <use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/>
+                  <use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/>
+                </g>
+                <use xlink:href="#b" x="247" y="210"/>
+              </g>
+              <use xlink:href="#c" x="494"/>
+            </g>
+            <use xlink:href="#d" x="988"/>
+            <use xlink:href="#c" x="1976"/>
+            <use xlink:href="#e" x="2470"/>
+        </g>
+      </svg>
       English
     </button>
     <div id="languages" class="hidden absolute flex flex-col gap-2 top-8 p-2 -left-2 bg-zinc-400 dark:bg-zinc-600 rounded-sm">

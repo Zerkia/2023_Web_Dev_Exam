@@ -3,6 +3,8 @@
 
   <script src="validator.js"></script>
   <script src="app.js"></script>
+  <script src="users.js"></script>
+  <script src="orders.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </body>

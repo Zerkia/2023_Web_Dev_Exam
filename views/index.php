@@ -1,4 +1,4 @@
-<?php require_once __DIR__.'/_header.php'  ?>
+<?php require_once __DIR__.'/_header.php' ?>
 
 
 <header class="flex flex-col items-center gap-4 w-full py-24 border-b border-b-zinc-500">

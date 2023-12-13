@@ -6,7 +6,8 @@
   _is_admin();
 
   $db = _db();
-  $sql = $db->prepare('CALL get_all_users()');
+  $sql = $db->prepare('CALL search_users_by_name(:query)');
+  $sql->bindValue(':query', $_GET['query']);
   $sql->execute();
   $users = $sql->fetchAll();
 
@@ -19,8 +20,8 @@
     <form action="/search-users" method="GET" class="flex gap-4 items-center w-full">
       <label for="query" class="w-2/12">Search for users</label>
       <input name="query" 
-      class="w-8/12 h-8 dark:bg-zinc-400 rounded-sm outline-none" id="query" type="text">
-      <button class="w-2/12 h-8 text-black bg-white dark:bg-zinc-400 border dark:border-zinc-400 rounded-sm">Search</button>
+        class="w-8/12 h-8 dark:bg-zinc-400 rounded-sm outline-none" type="text">
+      <button class="w-2/12 h-8 text-black bg-zinc-400 border border-zinc-400 rounded-sm">Search</button>
     </form>
   </div>
 
@@ -32,25 +33,25 @@
     <p class="w-2/12 text-center">Status</p>
     <p class="w-1/12 ml-4">Delete</p>
   </div>
-  
+
   <?php foreach($users as $user):?>
     <div class="flex w-full pt-4">
       <div class="w-1/12"><?= $user['user_id'] ?></div>
       <div class="w-1/5"><?= $user['user_name'] ?></div>
       <div class="w-1/5"><?= $user['user_last_name'] ?></div>
       
-      <a href="user?user_id=<?= $user['user_id'] ?>" class="w-1/5 text-center">
+      <a href="user?user_id=<?= $user['user_id'] ?>" class="w-1/5">
         👁️
       </a>
 
       <button class="w-1/5" onclick="toggle_blocked(<?= $user['user_id'] ?>, <?= $user['user_is_blocked'] ?>)">
         <?= $user['user_is_blocked']  === 0 
-        ? '<span class="text-emerald-500">unblocked</span>' 
-        : '<span class="text-red-700">blocked</span>' ?>
+        ? '<span class="text-emerald-500">Unblocked</span>' 
+        : '<span class="text-red-700">Blocked</span>' ?>
       </button>
       
       
-      <form onsubmit="delete_user(); return false" method="POST">
+      <form onsubmit="delete_user(); return false">
         <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
         <button class="w-1/5">
           🗑️

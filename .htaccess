@@ -1,20 +1,23 @@
 RewriteEngine On
 
-#####
+##### Shortens script paths for imports
 RewriteRule ^app.js$          js/app.js [NC,L]
+RewriteRule ^users.js$        js/users.js [NC,L]
+RewriteRule ^orders.js$       js/orders.js [NC,L]
 RewriteRule ^validator.js$    js/validator.js [NC,L]
 
-
-#####
+##### Shortens urls
 RewriteRule ^$                  views/index.php [NC,L]
 RewriteRule ^signup$            views/signup.php [NC,L]
 RewriteRule ^login$             views/login.php [NC,L]
 RewriteRule ^logout$            views/logout.php [NC,L]
 RewriteRule ^users$             views/users.php [NC,L]
 RewriteRule ^user$              views/user.php [NC,L]
+RewriteRule ^search-users$      views/search_users.php [NC,L]
+RewriteRule ^orders$            views/orders.php [NC,L]
+RewriteRule ^search-orders$     views/search_orders.php [NC,L]
 
-
-
-
-
-
+###### Redirect to 404 if url is wrong
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^                   views/404.php [L]
