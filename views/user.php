@@ -2,7 +2,6 @@
     ob_start();
 
     require_once __DIR__.'/_header.php';
-    require_once __DIR__.'/../_.php';
 
     $db = _db();
     $q = $db->prepare("CALL user_info(:user_id)");
