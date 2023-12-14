@@ -1,6 +1,7 @@
 <?php 
 ob_start();
-session_start(); ?>
+session_start(); 
+?>
 
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -23,7 +24,7 @@ class="w-full h-screen text-base text-gray-900 font-roboto font-light bg-gray-20
 dark:bg-zinc-700 dark:text-zinc-300">
 
 
-<div id="menu" class="fixed flex top-0 -right-60 h-screen z-10 duration-500">
+<!-- <div id="menu" class="fixed flex top-0 -right-60 h-screen z-10 duration-500">
   <div id="menu_background" onclick="toogle_menu()" class="hidden absolute top-0 right-0 w-screen h-screen"></div>
   <div id="menu" class="absolute flex flex-col top-0 right-0 gap-2 w-60 h-screen p-6 text-lg bg-zinc-800 ">
     <a href="/">Home</a>
@@ -32,19 +33,33 @@ dark:bg-zinc-700 dark:text-zinc-300">
     <a href="/orders">Orders</a>
     <a href="/">About us</a>
   </div>
-</div>
+</div> -->
 
 <nav class="flex items-center w-full h-16 px-4 md:px-12 lg:px-44 border-b border-b-zinc-500">
-  <a href="/" class="text-xl font-bold text-sky-600">Food</a>
-  
-  <div class="md:flex gap-4 mx-auto">
-    <a href="users">Products</a>
-    <a href="users">Users</a>
-    <a href="orders">Orders</a>
-    <a href="users">About us</a>
-  </div>
+  <a href="/" class="text-xl font-bold text-sky-600 mr-56">Food</a>
   
   <div class="md:flex gap-4">
+  <?php 
+    if (isset($_SESSION['user'])) {
+      // User is logged in, display navigation based on user role
+      if ($_SESSION['user']['user_role_fk'] === 1) {
+          echo '<a href="profile">Profile</a>
+                <a href="users">Users</a>
+                <a href="your_orders">Your Orders</a>';
+      } elseif ($_SESSION['user']['user_role_fk'] === 2) {
+          echo '<a href="profile">Profile</a>
+                <a href="users">Users</a>
+                <a href="order_status">Order Status</a>';
+      } elseif ($_SESSION['user']['user_role_fk'] === 3) {
+          echo '<a href="products">Products</a>
+                <a href="users">Users</a>
+                <a href="orders">Orders</a>';
+      }
+  }
+  ?>
+  </div>
+  
+  <div class="md:flex gap-4 ml-auto">
     <?php
     if (isset($_SESSION['user'])) {
         echo '<a href="Logout">Logout</a>';
@@ -55,7 +70,7 @@ dark:bg-zinc-700 dark:text-zinc-300">
     ?>
   </div>
 
-  <div class="relative ml-auto">
+  <div class="relative ml-10">
     <button class="flex items-center" onclick="toggle_language()">
       <svg class="w-5 h-5 mr-2 rounded-full" aria-hidden="true" viewBox="0 0 3900 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/>
         <path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/>
@@ -107,7 +122,7 @@ dark:bg-zinc-700 dark:text-zinc-300">
     <svg id="btn_dark_icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" ><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
     <svg id="btn_light_icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" ><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>    
   </button>
-  <svg onclick="toogle_menu()" class="ml-4 cursor-pointer" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+  <!-- <svg onclick="toogle_menu()" class="ml-4 cursor-pointer" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg> -->
 
 </nav>
 

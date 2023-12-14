@@ -1,6 +1,11 @@
 <?php 
-require_once __DIR__.'/../_.php';
+ob_start();
 require_once __DIR__.'/_header.php';  
+require_once __DIR__.'/../_.php';
+
+_is_logged_in();
+
+ob_end_flush();
 ?>
 
 <main class="w-full min-h-screen mt-16">

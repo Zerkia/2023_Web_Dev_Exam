@@ -10,6 +10,7 @@
     $q->execute();
     $user = $q->fetch();
 
+    _is_blocked();
     _is_admin();
 
     if(!$user){

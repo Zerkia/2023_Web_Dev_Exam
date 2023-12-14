@@ -21,7 +21,6 @@ function _db(){
 	}	
 }
 
-
 // ##############################
 define('USER_NAME_MIN', 2);
 define('USER_NAME_MAX', 20);
@@ -124,6 +123,21 @@ function _validate_user_confirm_password(){
   $_POST['user_confirm_password'] = trim($_POST['user_confirm_password']);
   if( $_POST['user_password'] != $_POST['user_confirm_password']){
     throw new Exception($error, 400); 
+  }
+}
+
+function _is_logged_in(){
+  if(isset($_SESSION['user'])){
+    header('Location: /');
+  }
+}
+
+function _is_blocked(){
+  if(isset($_SESSION['user'])){
+    if($_SESSION['user']['user_is_blocked'] === 1){
+      header('Location: blocked');
+      die();
+    }
   }
 }
 

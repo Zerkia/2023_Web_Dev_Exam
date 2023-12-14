@@ -1,4 +1,11 @@
-<?php require_once __DIR__.'/_header.php' ?>
+<?php 
+ob_start();
+require_once __DIR__.'/_header.php';
+require_once __DIR__.'/../_.php';
+
+_is_blocked();
+ob_end_flush();
+?>
 
 
 <header class="flex flex-col items-center gap-4 w-full py-24 border-b border-b-zinc-500">

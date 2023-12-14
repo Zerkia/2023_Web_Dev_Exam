@@ -25,7 +25,8 @@ try{
     'user_id' => $user['user_id'],
     'user_name' => $user['user_name'],
     'user_email' => $user['user_email'],
-    'user_role_fk' => $user['user_role_fk']
+    'user_role_fk' => $user['user_role_fk'],
+    'user_is_blocked' => $user['user_is_blocked']
   ];
 
   echo json_encode($_SESSION['user']);

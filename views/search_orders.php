@@ -3,6 +3,7 @@
   require_once __DIR__.'/_header.php';
   require_once __DIR__.'/../_.php';
 
+  _is_blocked();
   _is_admin();
 
   $db = _db();

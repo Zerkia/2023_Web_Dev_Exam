@@ -1,9 +1,11 @@
 RewriteEngine On
 
 ##### Shortens script paths for imports
+RewriteRule ^imports.js$      js/imports.js [NC,L]
 RewriteRule ^app.js$          js/app.js [NC,L]
 RewriteRule ^users.js$        js/users.js [NC,L]
 RewriteRule ^orders.js$       js/orders.js [NC,L]
+RewriteRule ^products.js$     js/products.js [NC,L]
 RewriteRule ^validator.js$    js/validator.js [NC,L]
 
 ##### Shortens urls
@@ -16,6 +18,12 @@ RewriteRule ^user$              views/user.php [NC,L]
 RewriteRule ^search-users$      views/search_users.php [NC,L]
 RewriteRule ^orders$            views/orders.php [NC,L]
 RewriteRule ^search-orders$     views/search_orders.php [NC,L]
+RewriteRule ^products$          views/products.php [NC,L]
+RewriteRule ^search-products$   views/search_products.php [NC,L]
+
+
+###### Redirect to blocked if user is blocked
+RewriteRule ^blocked$           views/blocked.php [NC,L]
 
 ###### Redirect to 404 if url is wrong
 RewriteCond %{REQUEST_FILENAME} !-f
