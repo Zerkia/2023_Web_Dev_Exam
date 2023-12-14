@@ -58,7 +58,7 @@ async function login() {
     return;
   }
 
-  location.href = "/users";
+  location.href = "/";
 }
 
 async function is_username_available(){
@@ -93,6 +93,10 @@ async function is_email_available(){
     console.log("Email is available")
 }
 
+async function goToUpdateProfile(){
+  window.location.href = "update";
+}
+
 async function delete_user(){
   const form = event.target;
 
@@ -106,3 +110,37 @@ async function delete_user(){
 
   form.parentElement.remove();
 }
+
+async function confirmDeleteProfile(user_id) {
+  var isConfirmed = window.confirm("Are you sure you want to delete your profile?");
+
+  if (isConfirmed) {
+    await delete_own_user(user_id);
+    window.location.href = "logout";
+  }
+}
+
+async function delete_own_user(user_id) {
+  try {
+    const response = await fetch("api/api-delete-own-user.php", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_id: user_id }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete user. Status: ${response.status}`);
+    }
+
+    await response.json();
+
+  } catch (error) {
+    console.error("Error deleting user:", error);
+  }
+}
+
+
+
+

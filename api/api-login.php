@@ -24,7 +24,9 @@ try{
   $_SESSION['user'] = [
     'user_id' => $user['user_id'],
     'user_name' => $user['user_name'],
+    'user_last_name' => $user['user_last_name'],
     'user_email' => $user['user_email'],
+    'user_address' => $user['user_address'],
     'user_role_fk' => $user['user_role_fk'],
     'user_is_blocked' => $user['user_is_blocked']
   ];

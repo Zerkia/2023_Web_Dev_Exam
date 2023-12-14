@@ -20,6 +20,7 @@ RewriteRule ^orders$            views/orders.php [NC,L]
 RewriteRule ^search-orders$     views/search_orders.php [NC,L]
 RewriteRule ^products$          views/products.php [NC,L]
 RewriteRule ^search-products$   views/search_products.php [NC,L]
+RewriteRule ^profile$           views/profile.php [NC,L]
 
 
 ###### Redirect to blocked if user is blocked
