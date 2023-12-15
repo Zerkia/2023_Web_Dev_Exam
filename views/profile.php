@@ -2,11 +2,12 @@
 ob_start();
 require_once __DIR__.'/_header.php';  
 
-ob_end_flush();
-
 if (isset($_SESSION['user']['user_id'])) {
   $user_id = $_SESSION['user']['user_id'];
 }
+
+ob_end_flush();
+
 ?>
 
 <main class="w-full min-h-screen mt-16">
@@ -29,9 +30,10 @@ if (isset($_SESSION['user']['user_id'])) {
     <div> 
       <h1 class="text-center text-xl font-bold">🏡 Address</h1>
       <p class="text-center text-lg"><?= $_SESSION['user']['user_address'] ?></p>
+      <p class="text-center text-lg"><?= $_SESSION['user']['user_zip_code'] . ' ' . $_SESSION['user']['user_city'] ?></p>
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center pt-4">
       <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-6" onclick="goToUpdateProfile();">
         Update Profile
       </button>

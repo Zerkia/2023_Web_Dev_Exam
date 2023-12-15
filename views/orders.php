@@ -3,10 +3,14 @@
   require_once __DIR__.'/_header.php';
 
   _is_blocked();
-  _is_admin();
 
   $db = _db();
-  $sql = $db->prepare('CALL get_all_orders()');
+  if($_SESSION['user']['user_role_fk'] === 1){
+    $sql = $db->prepare('CALL get_all_own_orders(:user_id)');
+    $sql->bindValue(':user_id', $_SESSION['user']['user_id']);
+  } else {
+    $sql = $db->prepare('CALL get_all_orders()');
+  }
   $sql->execute();
   $orders = $sql->fetchAll();
 
@@ -30,7 +34,9 @@
     <p class="w-1/5">Product Name</p>
     <p class="w-1/5"></p>
     <p class="w-2/12">Amount Paid</p>
-    <p class="w-1/12 ml-10">Delete</p>
+    <?php if($_SESSION['user']['user_role_fk'] === 3): ?>
+      <p class="w-1/12 ml-10">Delete</p>
+    <?php endif; ?>
   </div>
   
   <?php foreach($orders as $order):?>
@@ -40,14 +46,15 @@
       <div class="w-2/5"><?= $order['order_product_name'] ?></div>
       <div class="w-1/5"><?= $order['order_amount_paid'] ?></div>
       
-      
-      <form onsubmit="delete_order(); return false" method="POST">
-        <input class="hidden" name="order_id" type="text" value="<?= $order['order_id'] ?>">
-        <button class="w-1/5">
-          🗑️
-        </button>
-      </form>
-    </div>
+      <?php if($_SESSION['user']['user_role_fk'] === 3): ?>
+        <form onsubmit="delete_order(); return false" method="POST">
+          <input class="hidden" name="order_id" type="text" value="<?= $order['order_id'] ?>">
+          <button class="w-1/5">
+            🗑️
+          </button>
+        </form>
+        <?php endif; ?>
+      </div>
   <?php endforeach?>
 </main>
 

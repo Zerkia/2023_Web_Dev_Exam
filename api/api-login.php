@@ -27,6 +27,8 @@ try{
     'user_last_name' => $user['user_last_name'],
     'user_email' => $user['user_email'],
     'user_address' => $user['user_address'],
+    'user_zip_code' => $user['user_zip_code'],
+    'user_city' => $user['user_city'],
     'user_role_fk' => $user['user_role_fk'],
     'user_is_blocked' => $user['user_is_blocked']
   ];

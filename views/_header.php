@@ -46,8 +46,7 @@ dark:bg-zinc-700 dark:text-zinc-300">
       // User is logged in, display navigation based on user role
       if ($_SESSION['user']['user_role_fk'] === 1) {
           echo '<a href="profile">Profile</a>
-                <a href="users">Users</a>
-                <a href="your_orders">Your Orders</a>';
+                <a href="orders">Your Orders</a>';
       } elseif ($_SESSION['user']['user_role_fk'] === 2) {
           echo '<a href="profile">Profile</a>
                 <a href="users">Users</a>

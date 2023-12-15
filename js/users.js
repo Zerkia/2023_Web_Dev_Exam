@@ -94,7 +94,33 @@ async function is_email_available(){
 }
 
 async function goToUpdateProfile(){
-  window.location.href = "update";
+  window.location.href = "updateProfile";
+}
+
+async function update_own_user(user_id) {
+  const frm = event.target;
+  const formData = new FormData(frm);
+  formData.append('user_id', user_id);
+
+  const conn = await fetch("/api/api-update-own-user.php", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await conn.text();
+  console.log(data);
+
+  if (!conn.ok) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
+    return;
+  }
+
+  location.href = "profile";
 }
 
 async function delete_user(){

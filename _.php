@@ -41,6 +41,66 @@ function _validate_user_name(){
     throw new Exception($error, 400);
   }
 }
+// ##############################
+define('USER_ADDRESS_MIN', 2);
+define('USER_ADDRESS_MAX', 255);
+function _validate_user_address(){
+  
+  $error = 'user_address min '.USER_ADDRESS_MIN.' max '.USER_ADDRESS_MAX;
+
+  if(!isset($_POST['user_address'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_address'] = trim($_POST['user_address']);
+
+  if( strlen($_POST['user_address']) < USER_ADDRESS_MIN ){
+    throw new Exception($error, 400);
+  }
+
+  if( strlen($_POST['user_address']) > USER_ADDRESS_MAX ){
+    throw new Exception($error, 400);
+  }
+}
+
+define('USER_ZIP_CODE_MIN', 2);
+define('USER_ZIP_CODE_MAX', 10);
+function _validate_user_zip_code(){
+  
+  $error = 'user_zip_code min '.USER_ZIP_CODE_MIN.' max '.USER_ZIP_CODE_MAX;
+
+  if(!isset($_POST['user_zip_code'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_zip_code'] = trim($_POST['user_zip_code']);
+
+  if( strlen((string)$_POST['user_zip_code']) < USER_ZIP_CODE_MIN ){
+    throw new Exception($error, 400);
+  }
+
+  if( strlen((string)$_POST['user_zip_code']) > USER_ZIP_CODE_MAX ){
+    throw new Exception($error, 400);
+  }
+}
+
+define('USER_CITY_MIN', 2);
+define('USER_CITY_MAX', 50);
+function _validate_user_city(){
+  
+  $error = 'user_city min '.USER_CITY_MIN.' max '.USER_CITY_MAX;
+
+  if(!isset($_POST['user_city'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_city'] = trim($_POST['user_city']);
+
+  if( strlen($_POST['user_city']) < USER_CITY_MIN ){
+    throw new Exception($error, 400);
+  }
+
+  if( strlen($_POST['user_city']) > USER_CITY_MAX ){
+    throw new Exception($error, 400);
+  }
+}
 
 // ##############################
 define('USER_LAST_NAME_MIN', 2);
@@ -92,6 +152,8 @@ function _validate_user_email(){
     throw new Exception($error, 400); 
   }
 }
+
+
 
 // ##############################
 define('USER_PASSWORD_MIN', 6);

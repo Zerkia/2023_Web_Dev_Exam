@@ -24,8 +24,8 @@ function validate(callback) {
 				break;
 			case "int":
 				if (! /^\d+$/.test(element.value) ||
-					parseInt(element.value) < parseInt(element.getAttribute("data-min")) ||
-					parseInt(element.value) > parseInt(element.getAttribute("data-max"))
+					parseInt(element.value.length) < parseInt(element.getAttribute("data-min")) ||
+					parseInt(element.value.length) > parseInt(element.getAttribute("data-max"))
 				) {
 					element.classList.add("validate_error")
 					// element.style.backgroundColor = validate_error
