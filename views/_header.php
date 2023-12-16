@@ -25,7 +25,7 @@ class="w-full h-screen text-base text-gray-900 font-roboto font-light bg-gray-20
 dark:bg-zinc-700 dark:text-zinc-300">
 
 <nav class="flex items-center w-full h-16 px-4 md:px-12 lg:px-44 border-b border-b-zinc-500">
-  <a href="/" class="text-xl font-bold text-sky-600 mr-56">Food</a>
+  <a href="/" class="text-xl font-bold text-sky-600 mr-56">Føtex Food</a>
   
   <div class="md:flex gap-4">
   <?php 
