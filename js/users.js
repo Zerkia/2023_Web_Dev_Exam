@@ -130,7 +130,7 @@ async function confirmDeleteProfile(user_id) {
 
   if (isConfirmed) {
     await delete_own_user(user_id);
-    window.location.href = "logout";
+    // window.location.href = "logout";
   }
 }
 
