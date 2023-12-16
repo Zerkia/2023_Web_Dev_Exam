@@ -1,3 +1,6 @@
+// Full Credit goes to Santiago Donoso for creating this function !
+// https://github.com/santiagodonoso
+
 function toggle_theme() {
   if (document.querySelector("html").classList.contains("dark")) {
     document.querySelector("html").classList.remove("dark");
