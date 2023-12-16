@@ -29,31 +29,43 @@
   </div>
 
   <div class="flex w-full pt-4 font-bold">
-    <p class="w-1/12">ID</p>
-    <p class="w-1/5">Name</p>
-    <p class="w-1/5">Product Name</p>
-    <p class="w-1/5"></p>
-    <p class="w-2/12">Amount Paid</p>
     <?php if($_SESSION['user']['user_role_fk'] === 3): ?>
-      <p class="w-1/12 ml-10">Delete</p>
+      <p class="w-1/12">ID</p>
+      <p class="w-1/6">Name</p>
+      <p class="w-1/3">Product Name</p>
+      <p class="w-1/6">Amount Paid</p>  
+      <p class="w-1/6 pl-2">Status</p>
+      <p class="w-1/12">Delete</p>
+    <?php else: ?>
+      <p class="w-1/12">ID</p>
+      <p class="w-1/6">Name</p>
+      <p class="w-1/3">Product Name</p>
+      <p class="w-1/6">Amount Paid</p>  
+      <p class="w-1/6 text-center">Status</p>
     <?php endif; ?>
   </div>
   
   <?php foreach($orders as $order):?>
     <div class="flex w-full pt-4">
-      <div class="w-1/12"><?= $order['order_id'] ?></div>
-      <div class="w-1/5"><?= $order['order_user_name'] ?></div>
-      <div class="w-2/5"><?= $order['order_product_name'] ?></div>
-      <div class="w-1/5"><?= $order['order_amount_paid'] ?></div>
-      
       <?php if($_SESSION['user']['user_role_fk'] === 3): ?>
+        <div class="w-1/12"><?= $order['order_id'] ?></div>
+        <div class="w-1/6"><?= $order['order_user_name'] ?></div>
+        <div class="w-1/3"><?= $order['order_product_name'] ?></div>
+        <div class="w-1/6"><?= $order['order_amount_paid'] ?></div>
+        <div class="w-1/6"><?= $order['order_status'] ?></div>
         <form onsubmit="delete_order(); return false" method="POST">
           <input class="hidden" name="order_id" type="text" value="<?= $order['order_id'] ?>">
-          <button class="w-1/5">
+          <button class="w-1/12 pl-3">
             🗑️
           </button>
         </form>
-        <?php endif; ?>
+      <?php else: ?>
+        <div class="w-1/12"><?= $order['order_id'] ?></div>
+        <div class="w-1/6"><?= $order['order_user_name'] ?></div>
+        <div class="w-1/3"><?= $order['order_product_name'] ?></div>
+        <div class="w-1/6"><?= $order['order_amount_paid'] ?></div>
+        <div class="w-1/6 text-center"><?= $order['order_status'] ?></div>
+      <?php endif; ?>
       </div>
   <?php endforeach?>
 </main>

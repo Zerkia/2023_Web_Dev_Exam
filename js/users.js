@@ -15,14 +15,12 @@ async function toggle_blocked(user_id, user_is_blocked) {
 
 async function signup() {
   const frm = event.target;
-  console.log(frm);
   const conn = await fetch("/api/api-signup.php", {
     method: "POST",
     body: new FormData(frm),
   });
 
-  const data = await conn.text();
-  console.log(data);
+  await conn.text();
 
   if (!conn.ok) {
     Swal.fire({
@@ -39,14 +37,12 @@ async function signup() {
 
 async function login() {
   const frm = event.target;
-  console.log(frm);
   const conn = await fetch("/api/api-login.php", {
     method: "POST",
     body: new FormData(frm),
   });
 
-  const data = await conn.text();
-  console.log(data);
+  await conn.text();
 
   if (!conn.ok) {
     Swal.fire({
@@ -63,34 +59,28 @@ async function login() {
 
 async function is_username_available(){
   const form = event.target.form;
-  console.log(form);
 
   const conn = await fetch("api/api-is-username-available.php", {
     method: 'POST',
     body: new FormData(form)
   });
   if(!conn.ok){
-    console.log("username is already in use");
     document.querySelector('#msg_username_not_available').classList.remove("hidden");
     return;
   }
-    console.log("username is available")
 }
 
 async function is_email_available(){
   const form = event.target.form;
-  console.log(form);
 
   const conn = await fetch("api/api-is-email-available.php", {
     method: 'POST',
     body: new FormData(form)
   });
   if(!conn.ok){
-    console.log("Email is already in use");
     document.querySelector('#msg_email_not_available').classList.remove("hidden");
     return;
   }
-    console.log("Email is available")
 }
 
 async function goToUpdateProfile(){
@@ -107,8 +97,7 @@ async function update_own_user(user_id) {
     body: formData,
   });
 
-  const data = await conn.text();
-  console.log(data);
+  await conn.text();
 
   if (!conn.ok) {
     Swal.fire({
@@ -131,8 +120,7 @@ async function delete_user(){
     body: new FormData(form)
   });
 
-  const response = await conn.json();
-  console.log(response);
+  await conn.json();
 
   form.parentElement.remove();
 }

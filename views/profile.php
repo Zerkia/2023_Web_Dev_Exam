@@ -6,6 +6,8 @@ if (isset($_SESSION['user']['user_id'])) {
   $user_id = $_SESSION['user']['user_id'];
 }
 
+_is_blocked();
+
 ob_end_flush();
 
 ?>

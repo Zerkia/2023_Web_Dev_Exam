@@ -1,5 +1,9 @@
 <?php 
+  ob_start();
   require_once __DIR__.'/_header.php';
+
+  _is_blocked();
+  ob_end_flush();
 ?>
 
 <main class="w-full px-4 md:px-12 lg:px-44">

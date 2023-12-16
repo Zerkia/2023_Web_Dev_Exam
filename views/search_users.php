@@ -6,7 +6,7 @@
   _is_admin();
 
   $db = _db();
-  $sql = $db->prepare('CALL search_users_by_name(:query)');
+  $sql = $db->prepare('CALL search_users_by_name_or_blocked(:query)');
   $sql->bindValue(':query', $_GET['query']);
   $sql->execute();
   $users = $sql->fetchAll();
@@ -20,8 +20,8 @@
     <form action="/search-users" method="GET" class="flex gap-4 items-center w-full">
       <label for="query" class="w-2/12">Search for users</label>
       <input name="query" 
-        class="w-8/12 h-8 dark:bg-zinc-400 rounded-sm outline-none" type="text">
-      <button class="w-2/12 h-8 text-black bg-zinc-400 border border-zinc-400 rounded-sm">Search</button>
+      class="w-8/12 h-8 dark:bg-zinc-400 rounded-sm outline-none" id="query" type="text">
+      <button class="w-2/12 h-8 text-black bg-white dark:bg-zinc-400 border dark:border-zinc-400 rounded-sm">Search</button>
     </form>
   </div>
 
@@ -33,14 +33,14 @@
     <p class="w-2/12 text-center">Status</p>
     <p class="w-1/12 ml-4">Delete</p>
   </div>
-
+  
   <?php foreach($users as $user):?>
     <div class="flex w-full pt-4">
       <div class="w-1/12"><?= $user['user_id'] ?></div>
       <div class="w-1/5"><?= $user['user_name'] ?></div>
       <div class="w-1/5"><?= $user['user_last_name'] ?></div>
       
-      <a href="user?user_id=<?= $user['user_id'] ?>" class="w-1/5">
+      <a href="user?user_id=<?= $user['user_id'] ?>" class="w-1/5 text-center">
         👁️
       </a>
 
@@ -51,7 +51,7 @@
       </button>
       
       
-      <form onsubmit="delete_user(); return false">
+      <form onsubmit="delete_user(); return false" method="POST">
         <input class="hidden" name="user_id" type="text" value="<?= $user['user_id'] ?>">
         <button class="w-1/5">
           🗑️

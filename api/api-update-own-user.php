@@ -41,7 +41,6 @@ try{
   $_SESSION['user']['user_zip_code'] = $_POST['user_zip_code'];
   $_SESSION['user']['user_city'] = $_POST['user_city'];
 
-  // echo json_encode(['user_id' => $_POST['user_id'], 'message' => 'Update successful']);
   echo json_encode($_SESSION['user']['user_name']);
 }catch(Exception $e){
   try{

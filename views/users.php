@@ -45,8 +45,8 @@
 
       <button class="w-1/5" onclick="toggle_blocked(<?= $user['user_id'] ?>, <?= $user['user_is_blocked'] ?>)">
         <?= $user['user_is_blocked']  === 0 
-        ? '<span class="text-emerald-500">unblocked</span>' 
-        : '<span class="text-red-700">blocked</span>' ?>
+        ? '<span class="text-emerald-500">Unblocked</span>' 
+        : '<span class="text-red-700">Blocked</span>' ?>
       </button>
       
       

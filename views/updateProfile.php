@@ -8,6 +8,8 @@ $sql->bindValue(':user_id', $_SESSION['user']['user_id']);
 $sql->execute();
 $user = $sql->fetch();
 
+_is_blocked();
+
 ob_end_flush();
 ?>
 

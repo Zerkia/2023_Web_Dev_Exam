@@ -6,8 +6,7 @@ async function delete_product(){
     body: new FormData(form)
   });
 
-  const response = await conn.json();
-  console.log(response);
+  await conn.json();
 
   form.parentElement.remove();
 }

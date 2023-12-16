@@ -1,18 +1,16 @@
 <?php
 
-// ##############################
+// Full Credit goes to Santiago Donoso for creating this _db function
+// https://github.com/santiagodonoso
 function _db(){
 	try{
     $user_name = "root";
     $user_password = "";
-	  // $db_connection = 'sqlite:'.__DIR__.'/database.sqlite';
 	  $db_connection = "mysql:host=localhost; dbname=company; charset=utf8mb4";
 	
-	  // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-	  //   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ   [{}]    $user->id
 	  $db_options = array(
 		PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // [['id'=>1, 'name'=>'A'],[]]  $user['id']
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 	  );
 	  return new PDO( $db_connection, $user_name, $user_password, $db_options );
 	}catch( PDOException $e){
@@ -21,7 +19,6 @@ function _db(){
 	}	
 }
 
-// ##############################
 define('USER_NAME_MIN', 2);
 define('USER_NAME_MAX', 20);
 function _validate_user_name(){
@@ -41,7 +38,7 @@ function _validate_user_name(){
     throw new Exception($error, 400);
   }
 }
-// ##############################
+
 define('USER_ADDRESS_MIN', 2);
 define('USER_ADDRESS_MAX', 255);
 function _validate_user_address(){
@@ -102,7 +99,6 @@ function _validate_user_city(){
   }
 }
 
-// ##############################
 define('USER_LAST_NAME_MIN', 2);
 define('USER_LAST_NAME_MAX', 20);
 function _validate_user_last_name(){
@@ -123,7 +119,6 @@ function _validate_user_last_name(){
   }
 }
 
-// ##############################
 define('USER_USERNAME_MIN', 1);
 define('USER_USERNAME_MAX', 25);
 function _validate_user_username(){
@@ -141,7 +136,6 @@ function _validate_user_username(){
   }
 }
 
-// ##############################
 function _validate_user_email(){
   $error = 'user_email invalid';
   if(!isset($_POST['user_email'])){ 
@@ -153,9 +147,6 @@ function _validate_user_email(){
   }
 }
 
-
-
-// ##############################
 define('USER_PASSWORD_MIN', 6);
 define('USER_PASSWORD_MAX', 50);
 function _validate_user_password(){
@@ -176,7 +167,6 @@ function _validate_user_password(){
   }
 }
 
-// ##############################
 function _validate_user_confirm_password(){
   $error = 'user_confirm_password must match the user_password';
   if(!isset($_POST['user_confirm_password'])){ 
