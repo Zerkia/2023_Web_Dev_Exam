@@ -39,6 +39,54 @@ function _validate_user_name(){
   }
 }
 
+define('USER_LAST_NAME_MIN', 2);
+define('USER_LAST_NAME_MAX', 20);
+function _validate_user_last_name(){
+
+  $error = 'user_last_name min '.USER_LAST_NAME_MIN.' max '.USER_LAST_NAME_MAX;
+
+  if(!isset($_POST['user_last_name'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_last_name'] = trim($_POST['user_last_name']);
+
+  if( strlen($_POST['user_last_name']) < USER_LAST_NAME_MIN ){
+    throw new Exception($error, 400);
+  }
+
+  if( strlen($_POST['user_last_name']) > USER_LAST_NAME_MAX ){
+    throw new Exception($error, 400);
+  }
+}
+
+define('USER_USERNAME_MIN', 1);
+define('USER_USERNAME_MAX', 25);
+function _validate_user_username(){
+  $error = 'user_username invalid';
+  if(!isset($_POST['user_username'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_username'] = trim($_POST['user_username']); 
+  if( strlen($_POST['user_username']) < USER_USERNAME_MIN ){
+    throw new Exception($error, 400);
+  }
+
+  if( strlen($_POST['user_username']) > USER_USERNAME_MAX ){
+    throw new Exception($error, 400);
+  }
+}
+
+function _validate_user_email(){
+  $error = 'user_email invalid';
+  if(!isset($_POST['user_email'])){ 
+    throw new Exception($error, 400); 
+  }
+  $_POST['user_email'] = trim($_POST['user_email']); 
+  if( ! filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL) ){
+    throw new Exception($error, 400); 
+  }
+}
+
 define('USER_ADDRESS_MIN', 2);
 define('USER_ADDRESS_MAX', 255);
 function _validate_user_address(){
@@ -96,54 +144,6 @@ function _validate_user_city(){
 
   if( strlen($_POST['user_city']) > USER_CITY_MAX ){
     throw new Exception($error, 400);
-  }
-}
-
-define('USER_LAST_NAME_MIN', 2);
-define('USER_LAST_NAME_MAX', 20);
-function _validate_user_last_name(){
-
-  $error = 'user_last_name min '.USER_LAST_NAME_MIN.' max '.USER_LAST_NAME_MAX;
-
-  if(!isset($_POST['user_last_name'])){ 
-    throw new Exception($error, 400); 
-  }
-  $_POST['user_last_name'] = trim($_POST['user_last_name']);
-
-  if( strlen($_POST['user_last_name']) < USER_LAST_NAME_MIN ){
-    throw new Exception($error, 400);
-  }
-
-  if( strlen($_POST['user_last_name']) > USER_LAST_NAME_MAX ){
-    throw new Exception($error, 400);
-  }
-}
-
-define('USER_USERNAME_MIN', 1);
-define('USER_USERNAME_MAX', 25);
-function _validate_user_username(){
-  $error = 'user_username invalid';
-  if(!isset($_POST['user_username'])){ 
-    throw new Exception($error, 400); 
-  }
-  $_POST['user_username'] = trim($_POST['user_username']); 
-  if( strlen($_POST['user_username']) < USER_USERNAME_MIN ){
-    throw new Exception($error, 400);
-  }
-
-  if( strlen($_POST['user_username']) > USER_USERNAME_MAX ){
-    throw new Exception($error, 400);
-  }
-}
-
-function _validate_user_email(){
-  $error = 'user_email invalid';
-  if(!isset($_POST['user_email'])){ 
-    throw new Exception($error, 400); 
-  }
-  $_POST['user_email'] = trim($_POST['user_email']); 
-  if( ! filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL) ){
-    throw new Exception($error, 400); 
   }
 }
 

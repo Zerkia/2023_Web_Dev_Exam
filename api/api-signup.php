@@ -18,7 +18,7 @@ try{
   $db = _db();
   $q = $db->prepare('
     INSERT INTO users 
-    (user_id, user_name, user_last_name, user_username, user_email, user_address, user_zip_code, user_city, user_password, user_role_fk, user_created_at, user_updated_at, user_deleted_at, user_is_blocked)
+    (user_id, user_name, user_last_name, user_username, user_email, user_address, user_zip_code, user_city, user_password, user_role_fk, user_created_at, user_updated_at, user_is_blocked)
     VALUES (
       :user_id, 
       :user_name, 
@@ -32,7 +32,6 @@ try{
       :user_role_fk, 
       :user_created_at, 
       :user_updated_at,
-      :user_deleted_at,
       :user_is_blocked)'
   );
   $q->bindValue(':user_id', null);
@@ -47,7 +46,6 @@ try{
   $q->bindValue(':user_role_fk', '1');
   $q->bindValue(':user_created_at', time());
   $q->bindValue(':user_updated_at', 0);
-  $q->bindValue(':user_deleted_at', 0);
   $q->bindValue(':user_is_blocked', 0);
 
   $q->execute();
@@ -71,7 +69,3 @@ try{
   }
 
 }
-
-
-
-

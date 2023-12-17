@@ -100,7 +100,7 @@ ob_end_flush();
         <span class="text-sky-600 font-bold">Password</span> 
         <span class="ml-auto">(<?= USER_PASSWORD_MIN ?> to <?= USER_PASSWORD_MAX ?> characters)</span>
       </label>    
-      <input name="user_password" type="text"
+      <input name="user_password" type="password"
       data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>"
       class="">
     </div>
@@ -109,7 +109,7 @@ ob_end_flush();
       <label for="" class="flex">
         <span class="text-sky-600 font-bold">Confirm Password</span>
       </label>    
-      <input name="user_confirm_password" type="text"
+      <input name="user_confirm_password" type="password"
       data-validate="match" data-match-name="user_password"
       class="">
     </div>
