@@ -55,7 +55,7 @@ ob_end_flush();
         <span class="ml-auto">(<?= USER_ZIP_CODE_MIN ?> to <?= USER_ZIP_CODE_MAX ?> characters)</span>
       </label>
       <input id="user_zip_code" name="user_zip_code" type="text"
-      data-validate="str" data-min="<?= USER_ZIP_CODE_MIN ?>" data-max="<?= USER_ZIP_CODE_MAX ?>"
+      data-validate="int" data-min="<?= USER_ZIP_CODE_MIN ?>" data-max="<?= USER_ZIP_CODE_MAX ?>"
       value="<?= $user['user_zip_code'] ?>">
     </div>
 
