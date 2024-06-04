@@ -28,7 +28,7 @@ ob_end_flush();
         <span class="text-sky-600 font-bold">Password</span> 
         <span class="ml-auto text-gray-500">(<?= USER_PASSWORD_MIN ?> to <?= USER_PASSWORD_MAX ?> characters)</span>
       </label>    
-      <input name="user_password" type="text"
+      <input name="user_password" type="password"
       data-validate="str" data-min="<?= USER_PASSWORD_MIN ?>" data-max="<?= USER_PASSWORD_MAX ?>"
       class="">
     </div>

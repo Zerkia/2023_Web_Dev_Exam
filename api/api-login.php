@@ -21,6 +21,7 @@ try{
   }
 
   session_start();
+  session_regenerate_id(true);
   $_SESSION['user'] = [
     'user_id' => $user['user_id'],
     'user_name' => $user['user_name'],
