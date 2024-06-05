@@ -184,6 +184,13 @@ function _is_logged_in(){
   }
 }
 
+function _is_admin(){
+  if($_SESSION['user']['user_role_fk'] !== 3){
+    header('Location: 404');
+    die();
+  };
+}
+
 function _is_blocked(){
   if(isset($_SESSION['user'])){
     if($_SESSION['user']['user_is_blocked'] === 1){
@@ -193,16 +200,10 @@ function _is_blocked(){
   }
 }
 
-function _is_admin(){
-  if($_SESSION['user']['user_role_fk'] !== 3){
-    header('Location: /');
-    die();
-  };
+function _prevent_XSS($text) {
+  return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
 
-function _prevent_XSS($text){
-  echo htmlspecialchars($text);
-}
 
 
 

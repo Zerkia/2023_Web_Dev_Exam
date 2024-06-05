@@ -35,9 +35,9 @@
   
   <?php foreach($users as $user):?>
     <div class="flex w-full pt-4">
-      <div class="w-1/12"><?= $user['user_id'] ?></div>
-      <div class="w-1/5"><?= $user['user_name'] ?></div>
-      <div class="w-1/5"><?= $user['user_last_name'] ?></div>
+      <div class="w-1/12"><?= _prevent_XSS($user['user_id']) ?></div>
+      <div class="w-1/5"><?= _prevent_XSS($user['user_name']) ?></div>
+      <div class="w-1/5"><?= _prevent_XSS($user['user_last_name']) ?></div>
       
       <a href="user?user_id=<?= $user['user_id'] ?>" class="w-1/5 text-center">
         👁️

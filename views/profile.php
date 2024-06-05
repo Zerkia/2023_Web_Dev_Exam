@@ -16,23 +16,23 @@ ob_end_flush();
   <div class="flex flex-col px-4 lg:w-1/3 mx-auto gap-4">
     <div>
       <h1 class="text-center text-xl font-bold">🧑 Name</h1>
-      <p class="text-center text-lg"><?= $_SESSION['user']['user_name'] ?></p>
+      <p class="text-center text-lg"><?= _prevent_XSS($_SESSION['user']['user_name']) ?></p>
     </div>
 
     <div> 
       <h1 class="text-center text-xl font-bold">👪 Last Name</h1> 
-      <p class="text-center text-lg"><?= $_SESSION['user']['user_last_name'] ?></p>
+      <p class="text-center text-lg"><?= _prevent_XSS($_SESSION['user']['user_last_name']) ?></p>
     </div>
 
     <div>
       <h1 class="text-center text-xl font-bold">📧 Email</h1>
-      <p class="text-center text-lg"><?= $_SESSION['user']['user_email'] ?></p>
+      <p class="text-center text-lg"><?= _prevent_XSS($_SESSION['user']['user_email']) ?></p>
     </div>
 
     <div> 
       <h1 class="text-center text-xl font-bold">🏡 Address</h1>
-      <p class="text-center text-lg"><?= $_SESSION['user']['user_address'] ?></p>
-      <p class="text-center text-lg"><?= $_SESSION['user']['user_zip_code'] . ' ' . $_SESSION['user']['user_city'] ?></p>
+      <p class="text-center text-lg"><?= _prevent_XSS($_SESSION['user']['user_address']) ?></p>
+      <p class="text-center text-lg"><?= _prevent_XSS($_SESSION['user']['user_zip_code'] . ' ' . $_SESSION['user']['user_city']) ?></p>
     </div>
 
     <div class="flex justify-center pt-4">

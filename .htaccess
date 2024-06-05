@@ -32,3 +32,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^                   views/404.php [L]
 RewriteRule ^_.php              views/404.php [NC,L]
+RewriteRule ^404$               views/404.php [NC,L]

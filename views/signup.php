@@ -80,7 +80,7 @@ ob_end_flush();
         <span class="text-sky-600 font-bold">Zip Code</span> 
         <span class="ml-auto">(<?= USER_ZIP_CODE_MIN ?> to <?= USER_ZIP_CODE_MAX ?> characters)</span>
       </label>
-      <input id="user_zip_code" name="user_zip_code" type="text"
+      <input id="user_zip_code" name="user_zip_code" type="int"
       data-validate="int" data-min="<?= USER_ZIP_CODE_MIN ?>" data-max="<?= USER_ZIP_CODE_MAX ?>"
       class="">
     </div>
