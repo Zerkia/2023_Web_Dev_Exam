@@ -203,9 +203,3 @@ function _is_blocked(){
 function _prevent_XSS($text) {
   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
-
-
-
-
-
-
